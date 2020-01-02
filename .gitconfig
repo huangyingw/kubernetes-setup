@@ -3,3 +3,6 @@
     path = ~/myproject/git/Kubernetes/setup/ 
 [commit]
     message = n
+[remote "origin"]
+    url = git@github.com:huangyingw/Kubernetes_setup.git
+    fetch = +refs/heads/*:refs/remotes/origin/*
