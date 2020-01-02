@@ -1,0 +1,5 @@
+[deploy]
+    host = master-node
+    path = ~/myproject/git/Kubernetes/setup/ 
+[commit]
+    message = n
