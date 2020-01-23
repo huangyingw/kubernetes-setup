@@ -9,7 +9,6 @@ apt-add-repository "deb http://apt.kubernetes.io/ kubernetes-xenial main"
 apt install -y kubeadm && \
     swapoff -a && \
     hostnamectl set-hostname master-node && \
-    kubeadm init --pod-network-cidr=10.244.0.0/16 && \
-    mkdir -p $HOME/.kube && \
-    cp -i /etc/kubernetes/admin.conf $HOME/.kube/config && \
-    chown $(id -u):$(id -g) $HOME/.kube/config
+    kubeadm init --pod-network-cidr=10.244.0.0/16
+
+kubectl taint nodes --all node-role.kubernetes.io/master-
