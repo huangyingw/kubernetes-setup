@@ -1,13 +1,13 @@
-[deploy]
-    host = master-node
-    path = ~/myproject/git/Kubernetes/setup/ 
+[remote "origin"]
+    url = git@github.com:huangyingw/kubernetes-setup.git
+    fetch = +refs/heads/*:refs/remotes/origin/*
 [commit]
     message = n
-[remote "origin"]
-    url = git@github.com:huangyingw/Kubernetes_setup.git
-    fetch = +refs/heads/*:refs/remotes/origin/*
 [branch "master"]
     remote = origin
     merge = refs/heads/master
 [push]
     remote = origin
+[deploy]
+    host = localhost
+    path = ~/myproject/git/Kubernetes/kubernetes-setup/
