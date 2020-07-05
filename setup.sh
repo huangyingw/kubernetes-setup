@@ -20,3 +20,6 @@ kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documen
 
 ./setup_gluster.sh
 ../examples/volumes/glusterfs/deploy.sh
+# ../examples/staging/persistent-volume-provisioning/README.md
+
+./setup_heketi.sh
