@@ -10,6 +10,6 @@ apt update
 apt install -y glusterfs-server glusterfs-client
 
 mkdir -p /media/nvme/glusterfs/distributed
-gluster volume create kube_vol transport tcp 10.1.10.95:/media/nvme/glusterfs/distributed force
+gluster volume create kube_vol transport tcp 10.1.10.177:/media/nvme/glusterfs/distributed force
 gluster volume start kube_vol
 gluster volume info kube_vol
