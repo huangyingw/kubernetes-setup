@@ -23,10 +23,10 @@ done
 ssh-keygen -f /etc/heketi/heketi_key -t rsa -N ''
 chown heketi:heketi /etc/heketi/heketi_key*
 
-for i in 10.1.10.95; do
+for i in 10.1.10.177; do
   ssh-copy-id -i /etc/heketi/heketi_key.pub root@$i
 done
-/usr/bin/ssh -i /etc/heketi/heketi_key root@10.1.10.95
+/usr/bin/ssh -i /etc/heketi/heketi_key root@10.1.10.177
 cp -fv heketi.service /etc/systemd/system/heketi.service
 systemctl daemon-reload
 systemctl enable --now heketi
