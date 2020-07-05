@@ -7,13 +7,13 @@
                         "server"
                     ],
                     "storage": [
-                        "10.1.10.95"
+                        "10.1.10.177"
                     ]
                 },
                 "zone": 1
             },
             "devices": [
-                "/dev/vdc", "/dev/vdd", "/dev/vde"
+                "/dev/vdb", "/dev/vdc", "/dev/vdd"
             ]
         }]
     }]
