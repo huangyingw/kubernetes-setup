@@ -18,7 +18,4 @@ kubectl taint nodes --all node-role.kubernetes.io/master-
 kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml
 #kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.0.0/aio/deploy/recommended.yaml
 
-apt install software-properties-common
-add-apt-repository ppa:gluster/glusterfs-7
-apt update
-apt install glusterfs-server
+./setup_gluster.sh
