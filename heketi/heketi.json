@@ -44,12 +44,12 @@
             "kubernetes: Communicate with GlusterFS containers over",
             "            Kubernetes exec api."
         ],
-        "executor": "mock",
+        "executor": "ssh",
 
         "_sshexec_comment": "SSH username and private key file information",
         "sshexec": {
             "keyfile": "/etc/heketi/heketi_key",
-            "user": "cloud-user",
+            "user": "root",
             "port": "22",
             "fstab": "/etc/fstab"
         },
