@@ -4,7 +4,7 @@
             "node": {
                 "hostnames": {
                     "manage": [
-                        "server"
+                        "kubernetes-master"
                     ],
                     "storage": [
                         "10.1.10.177"
