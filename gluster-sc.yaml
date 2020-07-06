@@ -1,0 +1,16 @@
+kind: StorageClass
+apiVersion: storage.k8s.io/v1beta1
+metadata:
+    name: gluster-heketi
+provisioner: kubernetes.io/glusterfs
+reclaimPolicy: Delete
+volumeBindingMode: Immediate
+allowVolumeExpansion: true
+parameters:
+    resturl: "http://heketiserverip:8080" 
+    restuser: "admin" 
+    secretName: "heketi-secret"
+    secretNamespace: "default"
+    volumetype: "replicate:2"
+    volumenameprefix: "k8s-dev"
+    clusterid: "b182cb76b881a0be2d44bd7f8fb07ea4"
