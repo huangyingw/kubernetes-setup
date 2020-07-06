@@ -11,3 +11,4 @@ kubectl get secret
 kubectl create -f gluster-sc.yaml
 kubectl get sc
 kubectl create --save-config -f glusterfs-pvc.yaml
+kubectl get  pvc
