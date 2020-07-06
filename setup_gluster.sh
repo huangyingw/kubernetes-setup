@@ -3,7 +3,11 @@ SCRIPT=$(realpath "$0")
 SCRIPTPATH=$(dirname "$SCRIPT")
 cd "$SCRIPTPATH"
 
+'
 https://docs.gluster.org/en/latest/Install-Guide/Install/
+https://wiki.myhypervisor.ca/books/linux/page/glusterfs-heketi-ubuntu-1804
+'
+
 apt install software-properties-common
 add-apt-repository ppa:gluster/glusterfs-7
 apt update
