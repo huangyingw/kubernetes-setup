@@ -7,10 +7,11 @@ reclaimPolicy: Delete
 volumeBindingMode: Immediate
 allowVolumeExpansion: true
 parameters:
-    resturl: "http://heketiserverip:8080" 
+    resturl: "http://10.1.10.177:8080" 
     restuser: "admin" 
     secretName: "heketi-secret"
     secretNamespace: "default"
     volumetype: "replicate:2"
     volumenameprefix: "k8s-dev"
-    clusterid: "b182cb76b881a0be2d44bd7f8fb07ea4"
+    # heketi-cli cluster list
+    clusterid: "0a1d4f84444039e0f29b427080993d03"
