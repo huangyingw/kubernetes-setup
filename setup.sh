@@ -5,6 +5,8 @@ cd "$SCRIPTPATH"
 
 curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add
 apt install curl
+snap install kube-controller-manager
+
 apt-add-repository "deb http://apt.kubernetes.io/ kubernetes-xenial main"
 apt install -y kubeadm && \
     swapoff -a && \
