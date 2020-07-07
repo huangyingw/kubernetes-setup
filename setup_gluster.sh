@@ -17,6 +17,10 @@ systemctl start glusterd
 systemctl enable glusterd
 systemctl status glusterd
 glusterfsd --version
+
+gluster peer probe gluster01
+gluster peer probe gluster02
+
 gluster peer status
 gluster pool list
 
