@@ -11,6 +11,7 @@ curl -s https://api.github.com/repos/heketi/heketi/releases/latest \
     | cut -d '"' -f 4 \
     | wget -qi -nc -
 
+rm -fr heketi/ heketi-client/
 for i in `ls | grep heketi | grep .tar.gz`; do tar xvf $i; done
 cp heketi/{heketi,heketi-cli} /usr/local/bin
 heketi --version
