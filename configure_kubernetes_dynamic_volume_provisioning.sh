@@ -6,6 +6,7 @@ cd "$SCRIPTPATH"
 heketi-cli cluster list
 echo -n "PASSWORD" | base64
 
+kubectl delete secrets heketi-secret 
 kubectl create -f gluster-secret.yaml
 kubectl get secret
 
