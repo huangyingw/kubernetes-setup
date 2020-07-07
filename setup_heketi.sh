@@ -43,7 +43,7 @@ heketi-cli topology load --json=/etc/heketi/topology.json
 
 heketi-cli node list
 # heketi-cli node info 56a8a65bff9461296f4ce8cba03481f7
-# heketi-cli volume create --size=1
-heketi-cli volume create --durability=none --size=1
+heketi-cli volume create --size=1
+# heketi-cli volume create --durability=none --size=1
 
 heketi-cli topology info
