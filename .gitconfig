@@ -1,8 +1,6 @@
 [remote "origin"]
     url = git@github.com:huangyingw/kubernetes-setup.git
     fetch = +refs/heads/*:refs/remotes/origin/*
-[commit]
-    message = n
 [branch "master"]
     remote = origin
     merge = refs/heads/master
