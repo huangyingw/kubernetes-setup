@@ -3,6 +3,7 @@ SCRIPT=$(realpath "$0")
 SCRIPTPATH=$(dirname "$SCRIPT")
 cd "$SCRIPTPATH"
 
+swapoff -a
 kubeadm reset -f
 rm -fr ~/.kube/
 kubeadm init --pod-network-cidr=10.244.0.0/16
