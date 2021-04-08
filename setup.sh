@@ -26,4 +26,4 @@ kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documen
 # ../examples/staging/persistent-volume-provisioning/README.md
 
 # ./setup_heketi.sh
-configure_kubernetes_dynamic_volume_provisioning.sh
+# configure_kubernetes_dynamic_volume_provisioning.sh
