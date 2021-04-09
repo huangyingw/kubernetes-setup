@@ -1,3 +1,21 @@
+diff --git a/install.sh b/install.sh
+new file mode 100755
+index 0000000..68cbafa
+--- /dev/null
++++ ./install.sh
+@@ -0,0 +1,12 @@
++#!/bin/zsh
++SCRIPT=$(realpath "$0")
++SCRIPTPATH=$(dirname "$SCRIPT")
++cd "$SCRIPTPATH"
++
++apt install -y curl
++curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add
++snap install kube-controller-manager
++
++apt-add-repository "deb http://apt.kubernetes.io/ kubernetes-xenial main"
++apt install -y kubeadm
++swapoff -a
 diff --git a/uninstall.sh b/remove_kubernetes_config.sh
 similarity index 100%
 rename from uninstall.sh
@@ -19,24 +37,21 @@ index 02f2f79..f257b8b 100755
  cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
  chown $(id -u):$(id -g) $HOME/.kube/config
 diff --git a/setup.sh b/setup.sh
-index 7dca79c..31fb178 100755
+index 7dca79c..39ea2f6 100755
 --- ./setup.sh
 +++ ./setup.sh
-@@ -3,13 +3,14 @@ SCRIPT=$(realpath "$0")
+@@ -3,13 +3,7 @@ SCRIPT=$(realpath "$0")
  SCRIPTPATH=$(dirname "$SCRIPT")
  cd "$SCRIPTPATH"
  
-+apt install -y curl
- curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add
+-curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add
 -apt install curl
- snap install kube-controller-manager
- 
- apt-add-repository "deb http://apt.kubernetes.io/ kubernetes-xenial main"
+-snap install kube-controller-manager
+-
+-apt-add-repository "deb http://apt.kubernetes.io/ kubernetes-xenial main"
 -apt install -y kubeadm && \
 -    swapoff -a && \
-+apt install -y kubeadm
-+swapoff -a
-+
++./install.sh
  kubeadm init --pod-network-cidr=10.244.0.0/16
  
  swapoff -a
