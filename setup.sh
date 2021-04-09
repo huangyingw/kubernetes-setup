@@ -13,4 +13,4 @@ chown $(id -u):$(id -g) $HOME/.kube/config
 
 kubectl taint nodes --all node-role.kubernetes.io/master-
 kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml
-#kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.0.0/aio/deploy/recommended.yaml
+# kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.0.0/aio/deploy/recommended.yaml
