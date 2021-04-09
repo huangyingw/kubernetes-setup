@@ -9,3 +9,6 @@
 [deploy]
     host = localhost
     path = ~/myproject/git/Kubernetes/kubernetes-setup/
+[gsync]
+    remote = origin
+    branch = master
