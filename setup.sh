@@ -14,10 +14,3 @@ chown $(id -u):$(id -g) $HOME/.kube/config
 kubectl taint nodes --all node-role.kubernetes.io/master-
 kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml
 #kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.0.0/aio/deploy/recommended.yaml
-
-# ./setup_gluster.sh
-# ../examples/volumes/glusterfs/deploy.sh
-# ../examples/staging/persistent-volume-provisioning/README.md
-
-# ./setup_heketi.sh
-# configure_kubernetes_dynamic_volume_provisioning.sh
