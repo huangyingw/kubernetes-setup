@@ -1,0 +1,42 @@
+diff --git a/uninstall.sh b/remove_kubernetes_config.sh
+similarity index 100%
+rename from uninstall.sh
+rename to remove_kubernetes_config.sh
+diff --git a/reset.sh b/reset.sh
+index 02f2f79..f257b8b 100755
+--- ./reset.sh
++++ ./reset.sh
+@@ -3,8 +3,10 @@ SCRIPT=$(realpath "$0")
+ SCRIPTPATH=$(dirname "$SCRIPT")
+ cd "$SCRIPTPATH"
+ 
+-./uninstall.sh
++./remove_kubernetes_config.sh
+ kubeadm init --pod-network-cidr=10.244.0.0/16
++
++swapoff -a
+ mkdir -p $HOME/.kube
+ cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+ chown $(id -u):$(id -g) $HOME/.kube/config
+diff --git a/setup.sh b/setup.sh
+index 7dca79c..31fb178 100755
+--- ./setup.sh
++++ ./setup.sh
+@@ -3,13 +3,14 @@ SCRIPT=$(realpath "$0")
+ SCRIPTPATH=$(dirname "$SCRIPT")
+ cd "$SCRIPTPATH"
+ 
++apt install -y curl
+ curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add
+-apt install curl
+ snap install kube-controller-manager
+ 
+ apt-add-repository "deb http://apt.kubernetes.io/ kubernetes-xenial main"
+-apt install -y kubeadm && \
+-    swapoff -a && \
++apt install -y kubeadm
++swapoff -a
++
+ kubeadm init --pod-network-cidr=10.244.0.0/16
+ 
+ swapoff -a
