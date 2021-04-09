@@ -21,7 +21,7 @@ similarity index 100%
 rename from uninstall.sh
 rename to remove_kubernetes_config.sh
 diff --git a/reset.sh b/reset.sh
-index 02f2f79..f257b8b 100755
+index 02f2f79..6757aad 100755
 --- ./reset.sh
 +++ ./reset.sh
 @@ -3,8 +3,10 @@ SCRIPT=$(realpath "$0")
@@ -36,8 +36,14 @@ index 02f2f79..f257b8b 100755
  mkdir -p $HOME/.kube
  cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
  chown $(id -u):$(id -g) $HOME/.kube/config
+@@ -11,5 +14,3 @@ chown $(id -u):$(id -g) $HOME/.kube/config
+ kubectl taint nodes --all node-role.kubernetes.io/master-
+ kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml
+ # kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.0.0/aio/deploy/recommended.yaml
+-
+-#./configure_kubernetes_dynamic_volume_provisioning.sh
 diff --git a/setup.sh b/setup.sh
-index 7dca79c..39ea2f6 100755
+index 7dca79c..e56e64e 100755
 --- ./setup.sh
 +++ ./setup.sh
 @@ -3,13 +3,7 @@ SCRIPT=$(realpath "$0")
@@ -55,3 +61,14 @@ index 7dca79c..39ea2f6 100755
  kubeadm init --pod-network-cidr=10.244.0.0/16
  
  swapoff -a
+@@ -20,10 +14,3 @@ chown $(id -u):$(id -g) $HOME/.kube/config
+ kubectl taint nodes --all node-role.kubernetes.io/master-
+ kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml
+ #kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.0.0/aio/deploy/recommended.yaml
+-
+-# ./setup_gluster.sh
+-# ../examples/volumes/glusterfs/deploy.sh
+-# ../examples/staging/persistent-volume-provisioning/README.md
+-
+-# ./setup_heketi.sh
+-# configure_kubernetes_dynamic_volume_provisioning.sh
