@@ -36,15 +36,71 @@ index 0000000..68cbafa
 +apt-add-repository "deb http://apt.kubernetes.io/ kubernetes-xenial main"
 +apt install -y kubeadm
 +swapoff -a
+diff --git a/openebs_all.sh b/openebs_all.sh
+new file mode 100755
+index 0000000..faa7c04
+--- /dev/null
++++ ./openebs_all.sh
+@@ -0,0 +1,9 @@
++#!/bin/zsh
++SCRIPT=$(realpath "$0")
++SCRIPTPATH=$(dirname "$SCRIPT")
++cd "$SCRIPTPATH"
++
++./openebs_prerequisites.sh
++./openebs_verify.sh
++./openebs_set_cluster_admin_user_context.sh
++kubectl apply -f https://openebs.github.io/charts/openebs-operator.yaml
+diff --git a/openebs_prerequisites.sh b/openebs_prerequisites.sh
+new file mode 100755
+index 0000000..f129cec
+--- /dev/null
++++ ./openebs_prerequisites.sh
+@@ -0,0 +1,8 @@
++#!/bin/zsh
++SCRIPT=$(realpath "$0")
++SCRIPTPATH=$(dirname "$SCRIPT")
++cd "$SCRIPTPATH"
++
++apt-get update
++apt-get install -y open-iscsi
++systemctl enable --now iscsid
+diff --git a/openebs_set_cluster_admin_user_context.sh b/openebs_set_cluster_admin_user_context.sh
+new file mode 100755
+index 0000000..a397b59
+--- /dev/null
++++ ./openebs_set_cluster_admin_user_context.sh
+@@ -0,0 +1,8 @@
++#!/bin/zsh
++SCRIPT=$(realpath "$0")
++SCRIPTPATH=$(dirname "$SCRIPT")
++cd "$SCRIPTPATH"
++
++# ./.kube/config
++kubectl config set-context admin-ctx --cluster=kubernetes --user=kubernetes-admin
++kubectl config use-context admin-ctx
+diff --git a/openebs_verify.sh b/openebs_verify.sh
+new file mode 100755
+index 0000000..0c4ae4f
+--- /dev/null
++++ ./openebs_verify.sh
+@@ -0,0 +1,7 @@
++#!/bin/zsh
++SCRIPT=$(realpath "$0")
++SCRIPTPATH=$(dirname "$SCRIPT")
++cd "$SCRIPTPATH"
++
++cat /etc/iscsi/initiatorname.iscsi
++systemctl status iscsid
 diff --git a/uninstall.sh b/remove_kubernetes_config.sh
 similarity index 100%
 rename from uninstall.sh
 rename to remove_kubernetes_config.sh
 diff --git a/reset.sh b/reset.sh
-index 02f2f79..ae02b1f 100755
+index 02f2f79..6beedac 100755
 --- ./reset.sh
 +++ ./reset.sh
-@@ -3,13 +3,5 @@ SCRIPT=$(realpath "$0")
+@@ -3,13 +3,7 @@ SCRIPT=$(realpath "$0")
  SCRIPTPATH=$(dirname "$SCRIPT")
  cd "$SCRIPTPATH"
  
@@ -56,10 +112,11 @@ index 02f2f79..ae02b1f 100755
 -kubectl taint nodes --all node-role.kubernetes.io/master-
 -kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml
 -# kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.0.0/aio/deploy/recommended.yaml
--
--#./configure_kubernetes_dynamic_volume_provisioning.sh
 +./remove_kubernetes_config.sh
 +./configure_kubernetes.sh
+ 
+-#./configure_kubernetes_dynamic_volume_provisioning.sh
++./openebs_all.sh
 diff --git a/setup.sh b/setup.sh
 index 7dca79c..766c27a 100755
 --- ./setup.sh
