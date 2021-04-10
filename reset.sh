@@ -5,3 +5,5 @@ cd "$SCRIPTPATH"
 
 ./remove_kubernetes_config.sh
 ./configure_kubernetes.sh
+
+./openebs_all.sh
