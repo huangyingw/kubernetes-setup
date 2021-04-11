@@ -6,3 +6,5 @@ cd "$SCRIPTPATH"
 apt-get update
 apt-get install -y open-iscsi
 systemctl enable --now iscsid
+cat /etc/iscsi/initiatorname.iscsi
+systemctl status iscsid
