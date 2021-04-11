@@ -25,4 +25,4 @@
 "./setup_gluster.sh"
 "./setup_heketi.sh"
 "./topology.json"
-"refactor.gdio.diff"
+"openebs.gdio.diff"
