@@ -1,0 +1,21 @@
+Get the IP Address of the node running the Jenkins pod:
+
+```bash
+ubuntu@kubemaster:~kubectl describe pod jenkins-2748455067-85jv2 | grep Node:
+Node:		kubeminion-02/172.28.128.5
+
+```
+Get the port number from the Jenkins service:
+
+```bash
+ubuntu@kubemaster-01:~ kubectl describe svc jenkins-svc | grep NodePort:
+NodePort:		<unset>	32540/TCP
+
+```
+
+Open the below URL in the browser:
+
+```bash
+https://172.28.128.5:32540
+
+```
