@@ -12,3 +12,5 @@
 [gsync]
     remote = origin
     branch = master
+[gdif]
+    ignore = readme
