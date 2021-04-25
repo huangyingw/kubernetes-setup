@@ -17,6 +17,7 @@
 "./openebs_verify.sh"
 "./prunefile.conf"
 "./prunefix.conf"
+"./readme"
 "./remove_kubernetes_config.sh"
 "./reset.sh"
 "./rsync.files"
