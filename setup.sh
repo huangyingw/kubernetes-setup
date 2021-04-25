@@ -5,3 +5,5 @@ cd "$SCRIPTPATH"
 
 ./install.sh
 ./configure_kubernetes.sh
+
+./openebs_all.sh
