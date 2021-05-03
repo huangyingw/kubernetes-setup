@@ -36,11 +36,11 @@ index 0000000..68cbafa
 +apt-add-repository "deb http://apt.kubernetes.io/ kubernetes-xenial main"
 +apt install -y kubeadm
 +swapoff -a
-diff --git a/installation.sh b/installation.sh
+diff --git a/metallb_installation.sh b/metallb_installation.sh
 new file mode 100755
 index 0000000..cbc3006
 --- /dev/null
-+++ ./installation.sh
++++ ./metallb_installation.sh
 @@ -0,0 +1,9 @@
 +#!/bin/zsh
 +SCRIPT=$(realpath "$0")
@@ -81,7 +81,7 @@ index 0000000..8a89921
 +cd "$SCRIPTPATH"
 +
 +./preparation.sh
-+./installation.sh
++./metallb_installation.sh
 +./metallb_configure.sh
 diff --git a/metallb_configure.sh b/metallb_configure.sh
 new file mode 100755
