@@ -3,4 +3,4 @@ SCRIPT=$(realpath "$0")
 SCRIPTPATH=$(dirname "$SCRIPT")
 cd "$SCRIPTPATH"
 
-kubectl apply -f ./
+kubectl apply -f ./metallb-config.yaml
