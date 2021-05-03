@@ -181,10 +181,10 @@ similarity index 100%
 rename from uninstall.sh
 rename to remove_kubernetes_config.sh
 diff --git a/reset.sh b/reset.sh
-index 02f2f79..6beedac 100755
+index 02f2f79..93bc443 100755
 --- ./reset.sh
 +++ ./reset.sh
-@@ -3,13 +3,7 @@ SCRIPT=$(realpath "$0")
+@@ -3,13 +3,8 @@ SCRIPT=$(realpath "$0")
  SCRIPTPATH=$(dirname "$SCRIPT")
  cd "$SCRIPTPATH"
  
@@ -201,6 +201,7 @@ index 02f2f79..6beedac 100755
  
 -#./configure_kubernetes_dynamic_volume_provisioning.sh
 +./openebs_all.sh
++./metallb_all.sh
 diff --git a/setup.sh b/setup.sh
 index 7dca79c..1f94bbf 100755
 --- ./setup.sh
