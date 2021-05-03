@@ -5,4 +5,4 @@ cd "$SCRIPTPATH"
 
 ./preparation.sh
 ./installation.sh
-./configure.sh
+./metallb_configure.sh
