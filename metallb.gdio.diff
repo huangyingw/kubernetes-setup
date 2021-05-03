@@ -56,7 +56,7 @@ index 0000000..07c4b65
 +      - 192.168.31.240-192.168.31.250
 diff --git a/metallb_all.sh b/metallb_all.sh
 new file mode 100755
-index 0000000..864e3e2
+index 0000000..a08b902
 --- /dev/null
 +++ ./metallb_all.sh
 @@ -0,0 +1,8 @@
@@ -95,6 +95,26 @@ index 0000000..cbc3006
 +kubectl apply -f https://raw.githubusercontent.com/metallb/metallb/v0.9.6/manifests/metallb.yaml
 +# On first install only
 +kubectl create secret generic -n metallb-system memberlist --from-literal=secretkey="$(openssl rand -base64 128)"
+diff --git a/metallb_preparation.sh b/metallb_preparation.sh
+new file mode 100755
+index 0000000..8cf9675
+--- /dev/null
++++ ./metallb_preparation.sh
+@@ -0,0 +1,14 @@
++#!/bin/zsh
++SCRIPT=$(realpath "$0")
++SCRIPTPATH=$(dirname "$SCRIPT")
++cd "$SCRIPTPATH"
++
++# see what changes would be made, returns nonzero returncode if different
++kubectl get configmap kube-proxy -n kube-system -o yaml | \
++    sed -e "s/strictARP: false/strictARP: true/" | \
++    kubectl diff -f - -n kube-system
++
++# actually apply the changes, returns nonzero returncode on errors only
++kubectl get configmap kube-proxy -n kube-system -o yaml | \
++    sed -e "s/strictARP: false/strictARP: true/" | \
++    kubectl apply -f - -n kube-system
 diff --git a/openebs_all.sh b/openebs_all.sh
 new file mode 100755
 index 0000000..1a5e274
@@ -156,26 +176,6 @@ index 0000000..41e02b7
 +kubectl get blockdevice -n openebs
 +# kubectl describe blockdevice blockdevice-c3f4da0efa6b0330fde5a02647a5f8df -n openebs
 +kubectl get sp
-diff --git a/metallb_preparation.sh b/metallb_preparation.sh
-new file mode 100755
-index 0000000..8cf9675
---- /dev/null
-+++ ./metallb_preparation.sh
-@@ -0,0 +1,14 @@
-+#!/bin/zsh
-+SCRIPT=$(realpath "$0")
-+SCRIPTPATH=$(dirname "$SCRIPT")
-+cd "$SCRIPTPATH"
-+
-+# see what changes would be made, returns nonzero returncode if different
-+kubectl get configmap kube-proxy -n kube-system -o yaml | \
-+    sed -e "s/strictARP: false/strictARP: true/" | \
-+    kubectl diff -f - -n kube-system
-+
-+# actually apply the changes, returns nonzero returncode on errors only
-+kubectl get configmap kube-proxy -n kube-system -o yaml | \
-+    sed -e "s/strictARP: false/strictARP: true/" | \
-+    kubectl apply -f - -n kube-system
 diff --git a/uninstall.sh b/remove_kubernetes_config.sh
 similarity index 100%
 rename from uninstall.sh
