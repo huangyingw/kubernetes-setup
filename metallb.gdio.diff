@@ -65,7 +65,7 @@ index 0000000..864e3e2
 +SCRIPTPATH=$(dirname "$SCRIPT")
 +cd "$SCRIPTPATH"
 +
-+./preparation.sh
++./metallb_preparation.sh
 +./metallb_installation.sh
 +./metallb_configure.sh
 diff --git a/metallb_configure.sh b/metallb_configure.sh
@@ -156,11 +156,11 @@ index 0000000..41e02b7
 +kubectl get blockdevice -n openebs
 +# kubectl describe blockdevice blockdevice-c3f4da0efa6b0330fde5a02647a5f8df -n openebs
 +kubectl get sp
-diff --git a/preparation.sh b/preparation.sh
+diff --git a/metallb_preparation.sh b/metallb_preparation.sh
 new file mode 100755
 index 0000000..8cf9675
 --- /dev/null
-+++ ./preparation.sh
++++ ./metallb_preparation.sh
 @@ -0,0 +1,14 @@
 +#!/bin/zsh
 +SCRIPT=$(realpath "$0")
