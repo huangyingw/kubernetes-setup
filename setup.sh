@@ -7,3 +7,4 @@ cd "$SCRIPTPATH"
 ./configure_kubernetes.sh
 
 ./openebs_all.sh
+./metallb_all.sh
