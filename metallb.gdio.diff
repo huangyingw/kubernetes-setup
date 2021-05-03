@@ -1,8 +1,8 @@
-diff --git a/configure.sh b/configure.sh
+diff --git a/metallb_configure.sh b/metallb_configure.sh
 new file mode 100755
 index 0000000..d8f70b5
 --- /dev/null
-+++ ./configure.sh
++++ ./metallb_configure.sh
 @@ -0,0 +1,6 @@
 +#!/bin/zsh
 +SCRIPT=$(realpath "$0")
@@ -95,7 +95,7 @@ index 0000000..8070fd8
 +
 +./preparation.sh
 +./installation.sh
-+./configure.sh
++./metallb_configure.sh
 diff --git a/openebs_all.sh b/openebs_all.sh
 new file mode 100755
 index 0000000..1a5e274
