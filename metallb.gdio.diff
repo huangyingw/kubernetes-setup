@@ -36,21 +36,6 @@ index 0000000..68cbafa
 +apt-add-repository "deb http://apt.kubernetes.io/ kubernetes-xenial main"
 +apt install -y kubeadm
 +swapoff -a
-diff --git a/metallb_installation.sh b/metallb_installation.sh
-new file mode 100755
-index 0000000..cbc3006
---- /dev/null
-+++ ./metallb_installation.sh
-@@ -0,0 +1,9 @@
-+#!/bin/zsh
-+SCRIPT=$(realpath "$0")
-+SCRIPTPATH=$(dirname "$SCRIPT")
-+cd "$SCRIPTPATH"
-+
-+kubectl apply -f https://raw.githubusercontent.com/metallb/metallb/v0.9.6/manifests/namespace.yaml
-+kubectl apply -f https://raw.githubusercontent.com/metallb/metallb/v0.9.6/manifests/metallb.yaml
-+# On first install only
-+kubectl create secret generic -n metallb-system memberlist --from-literal=secretkey="$(openssl rand -base64 128)"
 diff --git a/metallb-config.yaml b/metallb-config.yaml
 new file mode 100644
 index 0000000..07c4b65
@@ -71,7 +56,7 @@ index 0000000..07c4b65
 +      - 192.168.31.240-192.168.31.250
 diff --git a/metallb_all.sh b/metallb_all.sh
 new file mode 100755
-index 0000000..8a89921
+index 0000000..864e3e2
 --- /dev/null
 +++ ./metallb_all.sh
 @@ -0,0 +1,8 @@
@@ -95,6 +80,21 @@ index 0000000..d8f70b5
 +cd "$SCRIPTPATH"
 +
 +kubectl apply -f ./metallb-config.yaml
+diff --git a/metallb_installation.sh b/metallb_installation.sh
+new file mode 100755
+index 0000000..cbc3006
+--- /dev/null
++++ ./metallb_installation.sh
+@@ -0,0 +1,9 @@
++#!/bin/zsh
++SCRIPT=$(realpath "$0")
++SCRIPTPATH=$(dirname "$SCRIPT")
++cd "$SCRIPTPATH"
++
++kubectl apply -f https://raw.githubusercontent.com/metallb/metallb/v0.9.6/manifests/namespace.yaml
++kubectl apply -f https://raw.githubusercontent.com/metallb/metallb/v0.9.6/manifests/metallb.yaml
++# On first install only
++kubectl create secret generic -n metallb-system memberlist --from-literal=secretkey="$(openssl rand -base64 128)"
 diff --git a/openebs_all.sh b/openebs_all.sh
 new file mode 100755
 index 0000000..1a5e274
