@@ -4,5 +4,5 @@ SCRIPTPATH=$(dirname "$SCRIPT")
 cd "$SCRIPTPATH"
 
 ./preparation.sh
-./installation.sh
+./metallb_installation.sh
 ./metallb_configure.sh
