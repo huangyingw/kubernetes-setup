@@ -3,6 +3,7 @@ SCRIPT=$(realpath "$0")
 SCRIPTPATH=$(dirname "$SCRIPT")
 cd "$SCRIPTPATH"
 
+ufw disable                             
 kubeadm init --pod-network-cidr=10.244.0.0/16
 swapoff -a
 mkdir -p $HOME/.kube
