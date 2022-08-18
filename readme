@@ -19,3 +19,22 @@ Open the below URL in the browser:
 https://172.28.128.5:32540
 
 ```
+
+You need to update metallb-config.yaml, change the addresses section according to your router:
+      addresses:
+      - 192.168.31.240-192.168.31.250
+
+then run this file to setup kubernetes:
+https://github.com/huangyingw/kubernetes-setup/blob/metallb/setup.sh
+openebs is used for storage.
+metallb is used for load balance
+
+
+if anything wrong, you want to reset to default, run this script:
+https://github.com/huangyingw/kubernetes-setup/blob/metallb/reset.sh
+
+bitnami is a wonderful repo, https://bitnami.com/, help you to run any apps with ease and quickly.
+wordpress is just one of the charts they provide.
+
+run this script to setup wordpress on your kubernetes:
+https://github.com/huangyingw/bitnami_charts/blob/dev/bitnami/wordpress/deploy.sh
